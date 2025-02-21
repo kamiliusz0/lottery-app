@@ -33,9 +33,13 @@ function renderNameList() {
 addButton.addEventListener('click', () => {
     const name = nameInput.value.trim();
     if (name) {
-        names.push(name);
-        nameInput.value = ''; // Czyści pole tekstowe
-        renderNameList(); // Aktualizuje listę
+        if (!names.includes(name)) { // Sprawdza, czy imię już istnieje
+            names.push(name);
+            nameInput.value = ''; // Czyści pole tekstowe
+            renderNameList(); // Aktualizuje listę
+        } else {
+            alert('To imię już jest na liście!');
+        }
     } else {
         alert('Wpisz imię!');
     }
